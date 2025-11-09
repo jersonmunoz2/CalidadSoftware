@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calidad de Software - Sistema de Evaluación</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/jspdf-autotable@latest/dist/jspdf.plugin.autotable.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Sistema de Evaluación de Calidad de Software</h1>
+            <p class="subtitle">Plataforma Educativa para la Evaluación y Mejora de la Calidad en Proyectos de Software</p>
+            <button id="theme-toggle" title="Toggle dark mode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </header>
+
+        <nav>
+            <button class="nav-btn active" onclick="showSection('inicio')">Inicio</button>
+            <button class="nav-btn" onclick="showSection('normas')">Normas</button>
+            <button class="nav-btn" onclick="showSection('modelos')">Modelos</button>
+            <button class="nav-btn" onclick="showSection('estandares')">Estándares</button>
+            <button class="nav-btn" onclick="showSection('codigo')">Código</button>
+            <button class="nav-btn" onclick="showSection('pruebas')">Pruebas</button>
+            <button class="nav-btn" onclick="showSection('evaluador')">Evaluador</button>
+            <button class="nav-btn" onclick="showSection('video')">Video</button>
+            <button class="nav-btn" onclick="showSection('conclusiones')">Conclusiones</button>
+        </nav>
+
+        <div id="inicio" class="content-section active">
+            <h2>¿Qué es la Calidad de Software?</h2>
+            
+            <p>La calidad de software se define como el grado en que un sistema, componente o proceso cumple con los requisitos especificados y las necesidades o expectativas del cliente o usuario. Es un concepto multidimensional que abarca aspectos funcionales, técnicos y de experiencia de usuario.</p>
+
+            <div class="card">
+                <h3>Definición Formal</h3>
+                <p>Según la norma ISO/IEC 25010, la calidad del software es "el grado en que el producto de software satisface las necesidades declaradas e implícitas cuando se usa en condiciones especificadas".</p>
+            </div>
+
+            <h3>Importancia en Entornos Educativos</h3>
+            <p>En el contexto educativo, la calidad del software es fundamental porque:</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="icon">📚</div>
+                    <h4>Aprendizaje Efectivo</h4>
+                    <p>Facilita la comprensión y asimilación de contenidos mediante interfaces intuitivas y funcionales.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon">🔒</div>
+                    <h4>Seguridad</h4>
+                    <p>Protege la información sensible de estudiantes y docentes.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon">⚡</div>
+                    <h4>Rendimiento</h4>
+                    <p>Garantiza acceso rápido y eficiente a recursos educativos.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon">♿</div>
+                    <h4>Accesibilidad</h4>
+                    <p>Permite que todos los estudiantes accedan al contenido sin barreras.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon">🔧</div>
+                    <h4>Mantenibilidad</h4>
+                    <p>Facilita actualizaciones y mejoras continuas del sistema.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon">💰</div>
+                    <h4>Costo-Efectividad</h4>
+                    <p>Reduce costos de mantenimiento y corrección de errores.</p>
+                </div>
+            </div>
+
+            <h3>Beneficios de las Buenas Prácticas</h3>
+            <div class="card">
+                <p><strong>Reducción de Costos:</strong> Detectar y corregir defectos tempranamente puede reducir hasta un 80% los costos de corrección.</p>
+            </div>
+            <div class="card">
+                <p><strong>Satisfacción del Usuario:</strong> Software de calidad aumenta la satisfacción y retención de usuarios en un 60-70%.</p>
+            </div>
+            <div class="card">
+                <p><strong>Competitividad:</strong> Mejora la reputación institucional y atrae más usuarios.</p>
+            </div>
+            <div class="card">
+                <p><strong>Cumplimiento Normativo:</strong> Garantiza el cumplimiento de regulaciones y estándares educativos.</p>
+            </div>
+        </div>
+
+        <div id="normas" class="content-section">
+            <h2>Normas de Calidad de Software</h2>
+            
+            <p>Las normas proporcionan un marco de referencia estandarizado para evaluar y garantizar la calidad del software. Son esenciales para establecer criterios uniformes en la industria.</p>
+
+            <h3>ISO/IEC 25010 - Modelo de Calidad del Producto</h3>
+            <div class="card">
+                <p>Esta norma define ocho características principales de calidad:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Adecuación Funcional:</strong> Capacidad del producto para proporcionar funciones que satisfacen necesidades.</li>
+                    <li><strong>Eficiencia de Desempeño:</strong> Rendimiento relativo a la cantidad de recursos utilizados.</li>
+                    <li><strong>Compatibilidad:</strong> Capacidad de intercambiar información con otros sistemas.</li>
+                    <li><strong>Usabilidad:</strong> Facilidad de uso y aprendizaje del software.</li>
+                    <li><strong>Fiabilidad:</strong> Capacidad de funcionar correctamente bajo condiciones específicas.</li>
+                    <li><strong>Seguridad:</strong> Protección de información y datos.</li>
+                    <li><strong>Mantenibilidad:</strong> Facilidad para ser modificado.</li>
+                    <li><strong>Portabilidad:</strong> Capacidad de ser transferido a diferentes entornos.</li>
+                </ul>
+            </div>
+
+            <h3>ISO/IEC 25040 - Proceso de Evaluación</h3>
+            <div class="card">
+                <p>Define el proceso sistemático para evaluar la calidad del software, incluyendo:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Establecimiento de requisitos de evaluación</li>
+                    <li>Especificación de la evaluación</li>
+                    <li>Diseño de la evaluación</li>
+                    <li>Ejecución de la evaluación</li>
+                    <li>Conclusión de la evaluación</li>
+                </ul>
+            </div>
+
+            <h3>ISO 9001 - Gestión de Calidad</h3>
+            <div class="card">
+                <p>Aunque no es específica de software, esta norma establece principios de gestión de calidad aplicables al desarrollo de software, enfocándose en:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Enfoque al cliente</li>
+                    <li>Liderazgo</li>
+                    <li>Compromiso de las personas</li>
+                    <li>Enfoque basado en procesos</li>
+                    <li>Mejora continua</li>
+                </ul>
+            </div>
+
+            <h3>Aplicación en Entornos Educativos</h3>
+            <div class="card">
+                <p>Las normas permiten a las instituciones educativas:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Evaluar plataformas LMS y herramientas educativas</li>
+                    <li>Establecer criterios de selección de software</li>
+                    <li>Garantizar inversiones tecnológicas efectivas</li>
+                    <li>Asegurar la calidad de desarrollos propios</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="modelos" class="content-section">
+            <h2>Modelos de Calidad de Software</h2>
+            
+            <p>Los modelos de calidad proporcionan frameworks estructurados para evaluar y mejorar la calidad del software a lo largo de su ciclo de vida.</p>
+
+            <h3>CMMI (Capability Maturity Model Integration)</h3>
+            <div class="card">
+                <h4>Niveles de Madurez:</h4>
+                <div class="table-responsive">
+                <table>
+                    <tr>
+                        <th>Nivel</th>
+                        <th>Nombre</th>
+                        <th>Características</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Inicial</td>
+                        <td>Procesos impredecibles, poco controlados y reactivos</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Gestionado</td>
+                        <td>Proyectos gestionados, a menudo reactivos</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Definido</td>
+                        <td>Procesos caracterizados y proactivos</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Cuantitativamente Gestionado</td>
+                        <td>Procesos medidos y controlados</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Optimizado</td>
+                        <td>Enfoque en mejora continua</td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+
+            <h3>Modelo McCall</h3>
+            <div class="card">
+                <p>Organiza la calidad en tres perspectivas:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Operación del Producto:</strong> Corrección, fiabilidad, eficiencia, integridad, usabilidad</li>
+                    <li><strong>Revisión del Producto:</strong> Mantenibilidad, flexibilidad, testeabilidad</li>
+                    <li><strong>Transición del Producto:</strong> Portabilidad, reusabilidad, interoperabilidad</li>
+                </ul>
+            </div>
+
+            <h3>Modelo de Boehm</h3>
+            <div class="card">
+                <p>Define la calidad a través de características de alto nivel que se descomponen en características primitivas medibles. Enfatiza en:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Utilidad general (portabilidad, confiabilidad, eficiencia)</li>
+                    <li>Mantenibilidad (comprensibilidad, modificabilidad, testeabilidad)</li>
+                </ul>
+            </div>
+
+            <h3>Aplicación Práctica</h3>
+            <div class="card">
+                <p>En proyectos educativos, estos modelos permiten:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Evaluar la madurez de equipos de desarrollo</li>
+                    <li>Establecer roadmaps de mejora</li>
+                    <li>Identificar brechas en procesos</li>
+                    <li>Priorizar inversiones en capacitación</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="estandares" class="content-section">
+            <h2>Estándares de Calidad</h2>
+            
+            <p>Los estándares son especificaciones técnicas que definen requisitos, especificaciones, guías o características para asegurar la calidad y consistencia en el desarrollo de software.</p>
+
+            <h3>IEEE 730 - Aseguramiento de Calidad de Software</h3>
+            <div class="card">
+                <p>Establece requisitos mínimos para planes de aseguramiento de calidad, incluyendo:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Propósito y alcance del plan</li>
+                    <li>Referencias y documentación</li>
+                    <li>Gestión y organización</li>
+                    <li>Documentación y tareas</li>
+                    <li>Revisiones y auditorías</li>
+                    <li>Gestión de problemas y acciones correctivas</li>
+                </ul>
+            </div>
+
+            <h3>IEEE 829 - Documentación de Pruebas</h3>
+            <div class="card">
+                <p>Define la estructura de documentos de prueba:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Plan de pruebas</li>
+                    <li>Especificación de diseño de pruebas</li>
+                    <li>Especificación de casos de prueba</li>
+                    <li>Especificación de procedimientos de prueba</li>
+                    <li>Registro de pruebas</li>
+                    <li>Informe de incidentes</li>
+                    <li>Informe de resumen de pruebas</li>
+                </ul>
+            </div>
+
+            <h3>W3C Web Content Accessibility Guidelines (WCAG)</h3>
+            <div class="card">
+                <p>Estándar internacional para accesibilidad web, fundamental en educación:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Perceptible:</strong> La información debe ser presentada de formas que los usuarios puedan percibir</li>
+                    <li><strong>Operable:</strong> Los componentes de interfaz deben ser operables</li>
+                    <li><strong>Comprensible:</strong> La información y operación deben ser comprensibles</li>
+                    <li><strong>Robusto:</strong> El contenido debe ser robusto para diferentes tecnologías</li>
+                </ul>
+            </div>
+
+            <h3>Estándares de Codificación</h3>
+            <div class="card">
+                <p><strong>Clean Code (Robert C. Martin):</strong> Principios para código limpio y mantenible</p>
+                <p><strong>SOLID:</strong> Cinco principios de diseño orientado a objetos</p>
+                <p><strong>PSR (PHP Standards Recommendations):</strong> Estándares para PHP</p>
+                <p><strong>PEP 8:</strong> Guía de estilo para Python</p>
+            </div>
+
+            <h3>Beneficios en Educación</h3>
+            <div class="card">
+                <p>La aplicación de estándares en software educativo:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Asegura accesibilidad universal</li>
+                    <li>Facilita la integración entre sistemas</li>
+                    <li>Mejora la experiencia de aprendizaje</li>
+                    <li>Reduce costos de mantenimiento</li>
+                    <li>Garantiza cumplimiento normativo</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="codigo" class="content-section">
+            <h2>Código y Programación de Calidad</h2>
+            
+            <p>El código de calidad es la base de cualquier software exitoso. Un código bien estructurado, legible y mantenible reduce errores, facilita el trabajo en equipo y prolonga la vida útil del software.</p>
+
+            <h3>Principios Fundamentales</h3>
+            
+            <div class="card">
+                <h4>1. Legibilidad y Claridad</h4>
+                <p>El código debe ser fácil de leer y entender:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Nombres descriptivos para variables y funciones</li>
+                    <li>Comentarios significativos</li>
+                    <li>Estructura lógica y organizada</li>
+                    <li>Indentación consistente</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>2. Principios SOLID</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>S - Single Responsibility:</strong> Una clase debe tener una única responsabilidad</li>
+                    <li><strong>O - Open/Closed:</strong> Abierto para extensión, cerrado para modificación</li>
+                    <li><strong>L - Liskov Substitution:</strong> Los subtipos deben ser sustituibles por sus tipos base</li>
+                    <li><strong>I - Interface Segregation:</strong> Interfaces específicas mejor que una general</li>
+                    <li><strong>D - Dependency Inversion:</strong> Depender de abstracciones, no de concreciones</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>3. DRY (Don't Repeat Yourself)</h4>
+                <p>Evita la duplicación de código. Cada pieza de conocimiento debe tener una representación única en el sistema.</p>
+            </div>
+
+            <div class="card">
+                <h4>4. KISS (Keep It Simple, Stupid)</h4>
+                <p>La simplicidad debe ser un objetivo clave en el diseño. El código simple es más fácil de mantener y menos propenso a errores.</p>
+            </div>
+
+            <h3>Buenas Prácticas de Programación</h3>
+            
+            <div class="card">
+                <h4>Control de Versiones</h4>
+                <p>Uso de sistemas como Git para:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Rastrear cambios en el código</li>
+                    <li>Facilitar colaboración</li>
+                    <li>Permitir reversión de cambios</li>
+                    <li>Mantener historial completo</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>Revisión de Código</h4>
+                <p>Prácticas como Code Review y Pair Programming mejoran la calidad mediante:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Detección temprana de errores</li>
+                    <li>Compartir conocimiento</li>
+                    <li>Mantener estándares</li>
+                    <li>Mejorar diseño</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>Documentación</h4>
+                <p>Documentar código, APIs y arquitectura para facilitar mantenimiento y onboarding de nuevos desarrolladores.</p>
+            </div>
+
+            <h3>Métricas de Calidad de Código</h3>
+            
+            <table>
+                <tr>
+                    <th>Métrica</th>
+                    <th>Descripción</th>
+                    <th>Objetivo</th>
+                </tr>
+                <tr>
+                    <td>Complejidad Ciclomática</td>
+                    <td>Mide la complejidad de un programa</td>
+                    <td>< 10 por función</td>
+                </tr>
+                <tr>
+                    <td>Cobertura de Código</td>
+                    <td>% de código ejecutado por pruebas</td>
+                    <td>> 80%</td>
+                </tr>
+                <tr>
+                    <td>Deuda Técnica</td>
+                    <td>Costo de trabajo adicional por soluciones rápidas</td>
+                    <td>Minimizar</td>
+                </tr>
+                <tr>
+                    <td>Duplicación de Código</td>
+                    <td>% de código duplicado</td>
+                    <td>< 5%</td>
+                </tr>
+                <tr>
+                    <td>Líneas por Función</td>
+                    <td>Cantidad de líneas en cada función</td>
+                    <td>< 50 líneas</td>
+                </tr>
+            </table>
+
+            <h3>Herramientas de Análisis</h3>
+            <div class="card">
+                <p><strong>Analizadores Estáticos:</strong> SonarQube, ESLint, Pylint, CheckStyle</p>
+                <p><strong>Formateadores:</strong> Prettier, Black, PHP-CS-Fixer</p>
+                <p><strong>Detectores de Seguridad:</strong> Snyk, OWASP Dependency Check</p>
+            </div>
+        </div>
+
+        <div id="pruebas" class="content-section">
+            <h2>Pruebas y Evaluación</h2>
+            
+            <p>Las pruebas son esenciales para garantizar que el software funcione correctamente y cumpla con los requisitos especificados. Un proceso de pruebas robusto detecta errores tempranamente y reduce costos.</p>
+
+            <h3>Tipos de Pruebas</h3>
+
+            <div class="card">
+                <h4>Pruebas Unitarias</h4>
+                <p>Verifican el funcionamiento de componentes individuales:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Prueban funciones o métodos aislados</li>
+                    <li>Automatizables y rápidas</li>
+                    <li>Herramientas: JUnit, pytest, Jest, PHPUnit</li>
+                    <li>Objetivo: 80-90% de cobertura</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>Pruebas de Integración</h4>
+                <p>Verifican la interacción entre componentes:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Prueban interfaces entre módulos</li>
+                    <li>Detectan problemas de comunicación</li>
+                    <li>Validan flujos de datos</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>Pruebas de Sistema</h4>
+                <p>Evalúan el sistema completo:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Verifican requisitos funcionales</li>
+                    <li>Prueban el sistema end-to-end</li>
+                    <li>Incluyen pruebas de rendimiento y seguridad</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>Pruebas de Aceptación</h4>
+                <p>Validan que el software cumple expectativas del usuario:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Realizadas por usuarios finales</li>
+                    <li>Verifican casos de uso reales</li>
+                    <li>Criterio para aceptación del producto</li>
+                </ul>
+            </div>
+
+            <h3>Pruebas No Funcionales</h3>
+
+            <div class="card">
+                <h4>Pruebas de Rendimiento</h4>
+                <p>Evalúan la velocidad, escalabilidad y estabilidad bajo carga</p>
+            </div>
+
+            <div class="card">
+                <h4>Pruebas de Seguridad</h4>
+                <p>Identifican vulnerabilidades: SQL injection, XSS, CSRF, etc.</p>
+            </div>
+
+            <div class="card">
+                <h4>Pruebas de Usabilidad</h4>
+                <p>Evalúan la facilidad de uso y experiencia del usuario</p>
+            </div>
+
+            <div class="card">
+                <h4>Pruebas de Accesibilidad</h4>
+                <p>Verifican cumplimiento de estándares WCAG</p>
+            </div>
+
+            <h3>Metodologías de Pruebas</h3>
+
+            <div class="card">
+                <h4>TDD (Test-Driven Development)</h4>
+                <p>Escribir pruebas antes del código:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Red: Escribir prueba que falla</li>
+                    <li>Green: Escribir código mínimo para pasar</li>
+                    <li>Refactor: Mejorar código manteniendo pruebas</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>BDD (Behavior-Driven Development)</h4>
+                <p>Enfoque en comportamiento del software usando lenguaje natural (Given-When-Then)</p>
+            </div>
+
+            <h3>Herramientas de Pruebas</h3>
+            
+            <div class="table-responsive">
+            <div class="table-responsive">
+            <table>
+                <tr>
+                    <th>Categoría</th>
+                    <th>Herramientas</th>
+                    <th>Uso</th>
+                </tr>
+                <tr>
+                    <td>Unitarias</td>
+                    <td>JUnit, pytest, Jest, Mocha</td>
+                    <td>Pruebas de código</td>
+                </tr>
+                <tr>
+                    <td>E2E</td>
+                    <td>Selenium, Cypress, Playwright</td>
+                    <td>Pruebas de interfaz</td>
+                </tr>
+                <tr>
+                    <td>API</td>
+                    <td>Postman, REST Assured, SoapUI</td>
+                    <td>Pruebas de servicios</td>
+                </tr>
+                <tr>
+                    <td>Rendimiento</td>
+                    <td>JMeter, LoadRunner, Gatling</td>
+                    <td>Carga y estrés</td>
+                </tr>
+                <tr>
+                    <td>Seguridad</td>
+                    <td>OWASP ZAP, Burp Suite, Nessus</td>
+                    <td>Vulnerabilidades</td>
+                </tr>
+            </table>
+            </div>
+            </div>
+
+            <h3>Automatización de Pruebas</h3>
+            <div class="card">
+                <p>Beneficios de la automatización:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Ejecución rápida y repetible</li>
+                    <li>Detección temprana de regresiones</li>
+                    <li>Reducción de costos a largo plazo</li>
+                    <li>Mayor cobertura de pruebas</li>
+                    <li>Integración con CI/CD</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="evaluador" class="content-section">
+            <h2>⚙️ Evaluador de Calidad de Software</h2>
+            
+            <p>Este modelo cuantitativo evalúa la calidad de software basándose en las 8 características de ISO/IEC 25010. Cada métrica se califica de 0 a 5, donde 5 es excelente y 0 es deficiente.</p>
+
+            <div class="evaluator">
+                <h3>Configurar Evaluación</h3>
+                <div class="presets-container">
+                    <button class="preset-btn" onclick="loadPreset('excelente')">Excelente</button>
+                    <button class="preset-btn" onclick="loadPreset('bueno')">Bueno</button>
+                    <button class="preset-btn" onclick="loadPreset('regular')">Regular</button>
+                    <button class="preset-btn" onclick="loadPreset('deficiente')">Deficiente</button>
+                </div>
+                
+                <div class="metric-group">
+                    <label class="metric-label">1. Adecuación Funcional</label>
+                    <p style="font-size: 0.9em; color: #666;">¿El software proporciona todas las funciones necesarias para cumplir sus objetivos?</p>
+                    <div class="slider-container">
+                        <input type="range" id="funcionalidad" min="0" max="5" step="0.1" value="3.5">
+                        <span class="value-display" id="funcionalidad-val">3.5</span>
+                    </div>
+                </div>
+
+                <div class="metric-group">
+                    <label class="metric-label">2. Eficiencia de Desempeño</label>
+                    <p style="font-size: 0.9em; color: #666;">¿Qué tan rápido y eficiente es el software en el uso de recursos?</p>
+                    <div class="slider-container">
+                        <input type="range" id="desempeno" min="0" max="5" step="0.1" value="3.5">
+                        <span class="value-display" id="desempeno-val">3.5</span>
+                    </div>
+                </div>
+
+                <div class="metric-group">
+                    <label class="metric-label">3. Compatibilidad</label>
+                    <p style="font-size: 0.9em; color: #666;">¿Puede el software coexistir e intercambiar información con otros sistemas?</p>
+                    <div class="slider-container">
+                        <input type="range" id="compatibilidad" min="0" max="5" step="0.1" value="3.5">
+                        <span class="value-display" id="compatibilidad-val">3.5</span>
+                    </div>
+                </div>
+
+                <div class="metric-group">
+                    <label class="metric-label">4. Usabilidad</label>
+                    <p style="font-size: 0.9em; color: #666;">¿Qué tan fácil es usar y aprender el software?</p>
+                    <div class="slider-container">
+                        <input type="range" id="usabilidad" min="0" max="5" step="0.1" value="3.5">
+                        <span class="value-display" id="usabilidad-val">3.5</span>
+                    </div>
+                </div>
+
+                <div class="metric-group">
+                    <label class="metric-label">5. Fiabilidad</label>
+                    <p style="font-size: 0.9em; color: #666;">¿El software funciona correctamente sin fallos bajo condiciones normales?</p>
+                    <div class="slider-container">
+                        <input type="range" id="fiabilidad" min="0" max="5" step="0.1" value="3.5">
+                        <span class="value-display" id="fiabilidad-val">3.5</span>
+                    </div>
+                </div>
+
+                <div class="metric-group">
+                    <label class="metric-label">6. Seguridad</label>
+                    <p style="font-size: 0.9em; color: #666;">¿Qué tan bien protege el software la información y los datos?</p>
+                    <div class="slider-container">
+                        <input type="range" id="seguridad" min="0" max="5" step="0.1" value="3.5">
+                        <span class="value-display" id="seguridad-val">3.5</span>
+                    </div>
+                </div>
+
+                <div class="metric-group">
+                    <label class="metric-label">7. Mantenibilidad</label>
+                    <p style="font-size: 0.9em; color: #666;">¿Qué tan fácil es modificar y mantener el software?</p>
+                    <div class="slider-container">
+                        <input type="range" id="mantenibilidad" min="0" max="5" step="0.1" value="3.5">
+                        <span class="value-display" id="mantenibilidad-val">3.5</span>
+                    </div>
+                </div>
+
+                <div class="metric-group">
+                    <label class="metric-label">8. Portabilidad</label>
+                    <p style="font-size: 0.9em; color: #666;">¿Puede el software ser transferido a diferentes entornos?</p>
+                    <div class="slider-container">
+                        <input type="range" id="portabilidad" min="0" max="5" step="0.1" value="3.5">
+                        <span class="value-display" id="portabilidad-val">3.5</span>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="calculate-btn" onclick="calculateQuality()">📊 Calcular Calidad Total</button>
+                    <button class="report-btn" onclick="downloadReport()">📄 Descargar Reporte</button>
+                </div>
+
+                <div id="result" class="result">
+                    <div class="result-label">Calificación de Calidad de Software</div>
+                    <div class="result-score" id="score">0.0</div>
+                    <div id="interpretation" style="font-size: 1.2em; margin-top: 10px;"></div>
+                    <div class="chart-container">
+                        <canvas id="qualityChart"></canvas>
+                    </div>
+                    <div id="recommendation" style="margin-top: 20px; font-size: 1em;"></div>
+                </div>
+            </div>
+
+            <div class="example-app">
+                <h3>📱 Ejemplo: Evaluación de Plataforma LMS Educativa</h3>
+                <p><strong>Sistema Evaluado:</strong> Plataforma de Gestión de Aprendizaje "EduLearn"</p>
+                
+                <table style="margin-top: 20px;">
+                    <tr>
+                        <th>Característica</th>
+                        <th>Puntuación</th>
+                        <th>Justificación</th>
+                    </tr>
+                    <tr>
+                        <td>Adecuación Funcional</td>
+                        <td>4.2</td>
+                        <td>Incluye todas las funciones básicas: gestión de cursos, evaluaciones, foros</td>
+                    </tr>
+                    <tr>
+                        <td>Eficiencia de Desempeño</td>
+                        <td>3.8</td>
+                        <td>Tiempo de carga aceptable, pero puede mejorar con 200+ usuarios concurrentes</td>
+                    </tr>
+                    <tr>
+                        <td>Compatibilidad</td>
+                        <td>4.5</td>
+                        <td>Compatible con múltiples navegadores y dispositivos, integra con Google Classroom</td>
+                    </tr>
+                    <tr>
+                        <td>Usabilidad</td>
+                        <td>4.0</td>
+                        <td>Interfaz intuitiva, curva de aprendizaje corta para estudiantes y profesores</td>
+                    </tr>
+                    <tr>
+                        <td>Fiabilidad</td>
+                        <td>3.5</td>
+                        <td>Disponibilidad del 98%, algunos errores ocasionales en módulo de calificaciones</td>
+                    </tr>
+                    <tr>
+                        <td>Seguridad</td>
+                        <td>4.3</td>
+                        <td>Autenticación robusta, encriptación de datos, cumple con GDPR</td>
+                    </tr>
+                    <tr>
+                        <td>Mantenibilidad</td>
+                        <td>3.9</td>
+                        <td>Código bien documentado, arquitectura modular, actualizaciones regulares</td>
+                    </tr>
+                    <tr>
+                        <td>Portabilidad</td>
+                        <td>4.2</td>
+                        <td>Funciona en Windows, Mac, Linux, iOS y Android</td>
+                    </tr>
+                    <tr style="background: #667eea; color: white; font-weight: bold;">
+                        <td>CALIFICACIÓN FINAL</td>
+                        <td colspan="2">4.05 / 5.0</td>
+                    </tr>
+                </table>
+
+                <div class="interpretation">
+                    <strong>Interpretación:</strong> La plataforma "EduLearn" obtiene una calificación de 4.05/5.0, lo que indica un nivel de calidad <strong>BUENO</strong>. El sistema cumple satisfactoriamente con los requisitos de calidad, aunque hay áreas de mejora en fiabilidad y eficiencia de desempeño bajo alta carga.
+                </div>
+
+                <h4 style="margin-top: 20px;">Recomendaciones de Mejora:</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Optimizar el módulo de calificaciones para reducir errores</li>
+                    <li>Implementar balanceo de carga para mejorar desempeño</li>
+                    <li>Realizar pruebas de estrés con más de 500 usuarios concurrentes</li>
+                    <li>Establecer monitoreo continuo de disponibilidad</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="video" class="content-section">
+            <h2>🎥 Video Explicativo</h2>
+            
+            <p>El siguiente video presenta la importancia y beneficios de implementar componentes de calidad de software en proyectos educativos y ambientes reales.</p>
+
+            <div class="card">
+                <h3>Contenido del Video:</h3>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Introducción a la calidad de software</li>
+                    <li>Importancia de normas y estándares</li>
+                    <li>Aplicación de modelos de calidad</li>
+                    <li>Buenas prácticas de código y programación</li>
+                    <li>Procesos de pruebas y evaluación</li>
+                    <li>Beneficios en entornos educativos</li>
+                    <li>Casos de éxito y resultados cuantificables</li>
+                </ul>
+            </div>
+
+            <div class="video-container">
+                <iframe src="https://youtu.be/0hWBkltVSkk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div id="conclusiones" class="content-section">
+            <h2>📝 Conclusiones y Recomendaciones</h2>
+            
+            <h3>Conclusiones</h3>
+
+            <div class="card">
+                <h4>1. Importancia Crítica de la Calidad</h4>
+                <p>La calidad del software no es un lujo sino una necesidad fundamental en el desarrollo de aplicaciones educativas. Software de baja calidad genera costos exponenciales en mantenimiento, insatisfacción de usuarios y pérdida de credibilidad institucional.</p>
+            </div>
+
+            <div class="card">
+                <h4>2. Enfoque Sistemático</h4>
+                <p>La implementación exitosa de calidad requiere un enfoque sistemático que integre normas, modelos, estándares y buenas prácticas a lo largo de todo el ciclo de vida del desarrollo. No es suficiente aplicar medidas aisladas.</p>
+            </div>
+
+            <div class="card">
+                <h4>3. Medición Cuantitativa</h4>
+                <p>La evaluación cuantitativa mediante métricas objetivas permite identificar áreas de mejora específicas y medir el progreso. El modelo presentado basado en ISO/IEC 25010 proporciona un marco sólido para esta evaluación.</p>
+            </div>
+
+            <div class="card">
+                <h4>4. Impacto en Entornos Educativos</h4>
+                <p>En contextos educativos, la calidad del software impacta directamente en la experiencia de aprendizaje. Sistemas de alta calidad facilitan la enseñanza, mejoran la participación estudiantil y permiten a los educadores enfocarse en la pedagogía en lugar de problemas técnicos.</p>
+            </div>
+
+            <div class="card">
+                <h4>5. ROI Positivo</h4>
+                <p>Aunque invertir en calidad tiene costos iniciales, el retorno de inversión es altamente positivo. Estudios demuestran que cada dólar invertido en calidad durante el desarrollo ahorra entre 4 y 10 dólares en mantenimiento y correcciones futuras.</p>
+            </div>
+
+            <div class="card">
+                <h4>6. Cultura de Calidad</h4>
+                <p>La calidad no es responsabilidad exclusiva del equipo de QA. Debe ser parte de la cultura organizacional, donde cada miembro del equipo de desarrollo asume la responsabilidad de producir trabajo de calidad.</p>
+            </div>
+
+            <h3>Recomendaciones</h3>
+
+            <div class="card">
+                <h4>Para Instituciones Educativas:</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Establecer estándares mínimos:</strong> Definir criterios de calidad obligatorios para todo software educativo implementado o desarrollado</li>
+                    <li><strong>Capacitación continua:</strong> Invertir en formación del personal en prácticas de calidad y nuevas tecnologías</li>
+                    <li><strong>Evaluación sistemática:</strong> Implementar evaluaciones periódicas de los sistemas existentes usando modelos como el presentado</li>
+                    <li><strong>Presupuesto para calidad:</strong> Asignar recursos específicos para actividades de aseguramiento de calidad</li>
+                    <li><strong>Participación de usuarios:</strong> Involucrar a estudiantes y docentes en procesos de evaluación y retroalimentación</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>Para Equipos de Desarrollo:</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Adoptar metodologías ágiles:</strong> Implementar Scrum o Kanban con énfasis en calidad en cada sprint</li>
+                    <li><strong>Automatizar pruebas:</strong> Desarrollar suites de pruebas automatizadas para garantizar regresión mínima</li>
+                    <li><strong>Code review obligatorio:</strong> Establecer revisiones de código peer-to-peer antes de integrar cambios</li>
+                    <li><strong>Integración continua:</strong> Implementar CI/CD con gates de calidad automáticos</li>
+                    <li><strong>Documentación técnica:</strong> Mantener documentación actualizada de arquitectura, APIs y procesos</li>
+                    <li><strong>Métricas de calidad:</strong> Monitorear KPIs como cobertura de código, deuda técnica y complejidad ciclomática</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>Para Gestores de Proyecto:</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Tiempo para calidad:</strong> Incluir tiempo específico para actividades de calidad en planificación</li>
+                    <li><strong>Definición de "Done":</strong> Establecer criterios claros que incluyan aspectos de calidad</li>
+                    <li><strong>Revisiones de calidad:</strong> Programar auditorías de calidad en hitos clave del proyecto</li>
+                    <li><strong>Gestión de riesgos:</strong> Identificar y mitigar riesgos de calidad tempranamente</li>
+                    <li><strong>Comunicación transparente:</strong> Reportar métricas de calidad a stakeholders regularmente</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>Mejores Prácticas Generales:</h4>
+                <ol style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Shift-Left Testing:</strong> Mover las actividades de prueba lo más temprano posible en el ciclo de desarrollo</li>
+                    <li><strong>Security by Design:</strong> Incorporar consideraciones de seguridad desde el diseño inicial</li>
+                    <li><strong>Accessibility First:</strong> Diseñar para accesibilidad desde el principio, no como reflexión posterior</li>
+                    <li><strong>Performance Budget:</strong> Establecer límites de rendimiento y monitorearlos continuamente</li>
+                    <li><strong>Continuous Learning:</strong> Fomentar el aprendizaje continuo y la experimentación controlada</li>
+                    <li><strong>Feedback Loops:</strong> Establecer ciclos cortos de retroalimentación con usuarios y stakeholders</li>
+                    <li><strong>Technical Debt Management:</strong> Abordar deuda técnica de manera proactiva y planificada</li>
+                </ol>
+            </div>
+
+            <h3>Llamado a la Acción</h3>
+            <div class="card" style="background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%); border-left: 5px solid #764ba2;">
+                <p style="font-size: 1.1em; font-weight: 500;">
+                    La calidad del software es una inversión en el futuro de la educación. Cada institución, equipo de desarrollo y profesional tiene la responsabilidad de elevar los estándares de calidad. Comience hoy evaluando sus sistemas actuales con el modelo presentado y establezca un plan de mejora continua.
+                </p>
+                <p style="margin-top: 15px; font-style: italic;">
+                    "La calidad nunca es un accidente; siempre es el resultado de un esfuerzo inteligente." - John Ruskin
+                </p>
+            </div>
+
+            <h3>Recursos Adicionales</h3>
+            <div class="card">
+                <ul style="margin-left: 20px;">
+                    <li>ISO/IEC 25000 series (SQuaRE) - <a href="https://iso25000.com" target="_blank">iso25000.com</a></li>
+                    <li>CMMI Institute - <a href="https://cmmiinstitute.com" target="_blank">cmmiinstitute.com</a></li>
+                    <li>W3C Accessibility Guidelines - <a href="https://www.w3.org/WAI" target="_blank">w3.org/WAI</a></li>
+                    <li>Clean Code by Robert C. Martin</li>
+                    <li>Software Testing Foundation by ISTQB</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Sistema de Evaluación de Calidad de Software</strong></p>
+            <p>Desarrollado para entornos educativos y ambientes reales</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                © 2025 - Basado en Normas ISO/IEC 25010 y mejores prácticas de la industria
+            </p>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <button id="scrollToTopBtn" title="Volver arriba">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 17 12"></polyline>
+        </svg>
+    </button>
+</body>
+</html>
